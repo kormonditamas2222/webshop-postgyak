@@ -16,7 +16,7 @@ export class AppController {
 
   @Post()
   @Render('index')
-  order(@Body() body: OrderDto) {
+  async order(@Body() body: OrderDto) {
     const nameRegex = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+ [A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+$/;
     const addressRegex = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+ [\d]{4} [A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüűA-ZÁÉÍÓÖŐÚÜŰ\.]+ [a-záéíóöőúüű]+ [\d\/A-Z]+$/;
     const phoneRegex = /^\+36[\d]{1,2}[\d]{7}$/;
@@ -56,7 +56,9 @@ export class AppController {
       if (parseInt(expiration[1]) < parseInt(ma.getFullYear().toString().slice(2))) {
         errors.push("A kártya lejárt.")
       }
-      else if (parseInt(expiration[0]) < ma.getMonth() + 1) {
+
+      // HELYTELEN VALIDÁCIÓ
+      else if (parseInt(expiration[1]) > parseInt(ma.getFullYear().toString().slice(2)) && parseInt(expiration[0]) < ma.getMonth() + 1) {
         errors.push("A kártya lejárt.")
       }
     }
@@ -68,6 +70,12 @@ export class AppController {
         errors,
         name: body.name, billingAddress: body.billingAddress, shippingAddress: body.shippingAddress,
         phoneNumber: body.phoneNumber, couponCode: body.couponCode
+      }
+    }
+    else {
+      await this.appService.ujRendeles(body.product, body.name, body.billingAddress, body.shippingAddress)
+      return {
+        message: "Sikeres rendelés!"
       }
     }
   }
