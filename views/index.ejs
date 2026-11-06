@@ -19,17 +19,18 @@
         <input type="radio" name="product" id="sajt" value="Sajt">
         <label for="sajt"><img src="/sajt.jpg"> Sajt 3.000 Ft</label> <br>
         <label for="name">Név</label>
-        <input type="text" name="name" id="name"> <br>
+        <input type="text" name="name" id="name" value="<%= locals.name %>"> <br>
+        <label>Cím (Város, irányítószám, utca (egyrészes legyen please), házszám)</label> <br>
         <label for="billingAddress">Számlázási cím</label>
-        <textarea name="billingAddress" id="billingAddress" cols="30" rows="4"></textarea> <br>
+        <textarea name="billingAddress" id="billingAddress" cols="30" rows="4"><%= locals.billingAddress %></textarea> <br>
         <label for="shippingAddress">Szállítási cím</label>
-        <textarea name="shippingAddress" id="shippingAddress" cols="30" rows="4"></textarea> <br>
+        <textarea name="shippingAddress" id="shippingAddress" cols="30" rows="4"><%= locals.shippingAddress %></textarea> <br>
         <label for="phoneNumber">Telefonszám</label>
-        <input type="text" name="phoneNumber" id="phoneNumber"> <br>
+        <input type="text" name="phoneNumber" id="phoneNumber" value="<%= locals.phoneNumber %>"> <br>
         <label for="couponCode">Kuponkód</label>
-        <input type="text" name="couponCode" id="couponCode"> <br>
+        <input type="text" name="couponCode" id="couponCode" value="<%= locals.couponCode %>"> <br>
         <label>Bankkártya adatok: <br>
-            <label for="cardNumber">Bankkártya szám</label>
+            <label for="cardNumber">Bankkártya szám (kötőjeles elválasztás)</label>
             <input type="text" name="cardNumber" id="cardNumber"> <br>
             <label for="expirationDate">Lejárati dátum</label>
             <input type="text" name="expirationDate" id="expirationDate"> <br>
@@ -38,5 +39,10 @@
         </label>
         <button type="submit">Rendelés</button>
     </form>
+    <% if (locals.errors) { %>
+        <% locals.errors.forEach(error => { %>
+            <p><%= error %></p>
+        <% }) %>
+    <% } %>
 </body>
 </html>
