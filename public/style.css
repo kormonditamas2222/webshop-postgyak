@@ -3,3 +3,8 @@ body {
     color:rgb(58, 46, 135);
 }
 
+img {
+    width: 100px;
+    height: 100px;
+}
+

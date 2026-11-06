@@ -7,9 +7,9 @@ export class AppController {
 
   @Get()
   @Render('index')
-  getHello() {
+  getWebshop() {
     return {
-      title: 'My First NestJS App'
+      
     }
   }
 }

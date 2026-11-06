@@ -4,12 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= title %>
+        Webshop
     </title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1><%= title %></h1>
-    Hello EJS!
+    <h1>Webshop</h1>
+    <h2>Rendelj egy terméket!</h2>
+    <form method="post">
+        <input type="radio" name="product" id="sencor" value="Sencor indukciós főzőlap">
+        <label for="sencor"><img src="/sencor.jpg"> Sencor indukciós főzőlap 190.000 Ft</label> <br>
+        <input type="radio" name="product" id="kilincs" value="Kilincs">
+        <label for="kilincs"><img src="/kilincs.jpg"> Kilincs 2.000 Ft</label> <br>
+        <input type="radio" name="product" id="sajt" value="Sajt">
+        <label for="sajt"><img src="/sajt.jpg"> Sajt 3.000 Ft</label> <br>
+        <label for="name">Név</label>
+        <input type="text" name="name" id="name"> <br>
+        <label for="billingAddress">Számlázási cím</label>
+        <textarea name="billingAddress" id="billingAddress" cols="30" rows="4"></textarea> <br>
+        <label for="shippingAddress">Szállítási cím</label>
+        <textarea name="shippingAddress" id="shippingAddress" cols="30" rows="4"></textarea> <br>
+        <label for="phoneNumber">Telefonszám</label>
+        <input type="text" name="phoneNumber" id="phoneNumber"> <br>
+        <label for="couponCode">Kuponkód</label>
+        <input type="text" name="couponCode" id="couponCode"> <br>
+        <label>Bankkártya adatok: <br>
+            <label for="cardNumber">Bankkártya szám</label>
+            <input type="text" name="cardNumber" id="cardNumber"> <br>
+            <label for="expirationDate">Lejárati dátum</label>
+            <input type="text" name="expirationDate" id="expirationDate"> <br>
+            <label for="CVC">Biztonsági kód</label>
+            <input type="text" name="CVC" id="CVC"> <br>
+        </label>
+        <button type="submit">Rendelés</button>
+    </form>
 </body>
 </html>
